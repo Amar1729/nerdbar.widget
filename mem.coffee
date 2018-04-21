@@ -14,10 +14,6 @@ update: (output, el) ->
   $(".mem span:first-child", el).text("  #{output}")
 
 style: """
-  -webkit-font-smoothing: antialiased
-  color: #d5c4a1
-  font: 10px Input
-  font: 10px Inconsolata
+  top: 7px
   right: 268px
-  top: 7.5px
 """

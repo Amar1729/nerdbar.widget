@@ -14,10 +14,6 @@ update: (output, el) ->
   $(".time span:first-child", el).text("  #{output}")
 
 style: """
-  -webkit-font-smoothing: antialiased
-  color: #d5c4a1
-  font: 10px Input
-  font: 13px Inconsolata
-  right: 10px
   top: 6px
+  right: 10px
 """

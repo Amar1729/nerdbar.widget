@@ -17,15 +17,13 @@ update: (output, el) ->
     $(".np span:first-child", el).text("  #{output}")
 
 style: """
-  -webkit-font-smoothing: antialiased
-  text-align: center
-  color: #d5c4a1
-  font: 10px Input
-  font: 13px Inconsolata
-  height: 16px
+  top: 6px
   left: 25%
+  height: 16px
+  width: 50%
+
+  text-align: center
+
   overflow: hidden
   text-overflow: ellipsis
-  top: 6px
-  width: 50%
 """

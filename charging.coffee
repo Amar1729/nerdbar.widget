@@ -22,9 +22,6 @@ icon: (output) =>
     ""
 
 style: """
-  -webkit-font-smoothing: antialiased
   top: 4px
-  right: 182px
   right: 247px
-  color: #d5c4a1
 """

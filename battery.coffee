@@ -28,10 +28,9 @@ icon: (output) =>
     "fa-battery-empty"
 
 style: """
-  -webkit-font-smoothing: antialiased
-  font: 9px Input
-  font: 12px Inconsolata
+  .battery
+    font-size: 12px
+  
   top: 7px
   right: 195px
-  color: #d5c4a1
 """

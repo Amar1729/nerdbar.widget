@@ -14,10 +14,6 @@ update: (output, el) ->
   $(".cal span:first-child", el).text("  #{output}")
 
 style: """
-  -webkit-font-smoothing: antialiased
-  color: #d5c4a1
-  font: 10px Input
-  font: 13px Inconsolata
-  right: 93px
   top: 6px
+  right: 93px
 """

@@ -47,4 +47,8 @@ do
 	fi
 done
 
-echo "$($kwmc query space active mode) | ${bbar[*]}"
+MODE="$($kwmc query space active mode)"
+SPACES="$(echo ${bbar[*]})"
+FOCUSED="$(kwmc query window focused name)"
+
+echo "$MODE | $SPACES | $FOCUSED"

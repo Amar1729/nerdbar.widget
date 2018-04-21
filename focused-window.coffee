@@ -1,4 +1,4 @@
-command: 'echo "$(./amar-bar.widget/spaces.sh) | $(/usr/local/bin/kwmc query window focused name)"'
+command: 'echo "$(./amar-bar.widget/scripts/spaces_kwm.sh)"'
 
 refreshFrequency: 1000 # ms
 
@@ -13,22 +13,19 @@ render: (output) ->
 update: (output, el) ->
   # my attempts to get monospaced spaces list:
   [mode, spaces, focused...] = output.split '|'
-  spaces = @redraw spaces
-  focused = @dotted focused.join('|'), 60
-  output = [ "<span>#{mode}|</span>", spaces, "<span>|#{focused}</span>" ].join('')
+  spaces = (@decide_active space for space in (spaces.split ' ')).join('')
+  focused = @trunc_focused focused.join('|'), 60
+  #output = [ "<span>#{mode}</span>", "|", spaces, "|", "<span class=\"focused overflow\">#{focused}</span>" ].join('')
+  output = ["<span>#{mode}</span>", spaces, "<span class=\"focused\">#{focused}</span>"].join('|')
   $(".foc span:first-child", el).html("  #{output}")
 
-dotted: (str, limit) ->
-  dots = "..."
-  if str.length > limit
-    str = str.substring(0,limit) + dots
-  return str
+# truncates focused window title if too long
+trunc_focused: (str, limit) ->
+  return if (str.length < limit) then str else (str.substring(0,limit) + "...")
 
-redraw: (spaces) ->
-  list = spaces.split ' '
-  result = ( @decide space for space in list).join('')
-
-decide: (elem) ->
+# checks if this number is the active space (will be surrounded by parens)
+# adds class 'active' or 'inactive' and returns HTML
+decide_active: (elem) ->
   elem.replace /^\s+|\s+$/g, ""
   if elem is ""
     return """ """
@@ -40,43 +37,6 @@ decide: (elem) ->
       elem = """<span class="list inactive">#{elem}</span>"""
     return elem
 
-###
-#old style values
-
-  font: 10px Input
-  height: 16px
-  left: 10px
-  top: 7px
-
-###
-
 style: """
-  -webkit-font-smoothing: antialiased
-  color: #d5c4a1
-  font: 11px Inconsolata
-
-  height: 18px
   left: 10px
-  top: 0px
-  padding-top: 7px
-
-  width: auto
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
-
-  span .list
-    display: inline
-    text-align: center
-    padding-top: 7px
-    padding-bottom: 11px
-    padding-left: 9px
-    padding-right: 8px
-
-  .inactive
-    border: 1px #a89984
-
-  .active
-    background: #ebdbb2
-    color: #282828
 """
