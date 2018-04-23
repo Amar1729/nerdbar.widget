@@ -1,5 +1,4 @@
-#command: 'echo "$(./amar-bar.widget/spaces.sh) | $(/usr/local/bin/kwmc query window focused name)"'
-command: 'echo "$(./amar-bar.widget/spaces_chunk.sh)"'
+command: 'echo "$(./amar-bar.widget/scripts/spaces_chunk.sh)"'
 
 refreshFrequency: 1000 # ms
 
