@@ -40,12 +40,12 @@ get_chunk() {
 
     # MHS:
     # Get list of spaces, and surround active space with ()
-    MONITOR="$($chunkc tiling::query -m id)"
-    sleep 1
-    SPACES="$($chunkc tiling::query --desktops-for-monitor $MONITOR)"
-    sleep 1
-    MHS=$(echo $SPACES | sed "s|\($($chunkc tiling::query -d id)\)|(\1)|")
-    sleep 1
+    # NOTE - this route is frackin' killing chunkwm so ... (?)
+    #MONITOR="$($chunkc tiling::query -m id)"
+    #SPACES="$($chunkc tiling::query --desktops-for-monitor $MONITOR)"
+    #MHS=$(echo $SPACES | sed "s|\($($chunkc tiling::query -d id)\)|(\1)|")
+    MHS="$($chunkc tiling::query -d id)"
+    MHS="($MHS)"
 
 
     # RHS:
