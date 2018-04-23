@@ -4,8 +4,10 @@
 kwmc=/usr/local/bin/kwmc
 
 # get active and previous space
-active=$($kwmc query space active id)
-previous=$($kwmc query space previous id)
+if ! active=$($kwmc query space active id)
+then
+    exit 1
+fi
 
 # get array of spaces
 spaces=()
