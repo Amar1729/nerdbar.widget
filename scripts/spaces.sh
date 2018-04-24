@@ -15,7 +15,7 @@ get_chunk() {
     # Exit if not running so spaces.sh can handle it
     if ! MODE=$($chunkc tiling::query -d mode)
     then
-        exit 1
+        return 1
     fi
 
     # LHS:
@@ -63,7 +63,7 @@ get_kwm() {
     # get active and previous space
     if ! active=$($kwmc query space active id)
     then
-        exit 1
+        return 1
     fi
 
     # get array of spaces
@@ -108,7 +108,7 @@ get_kwm() {
 
     MODE="$($kwmc query space active mode)"
     SPACES="$(echo ${bbar[*]})"
-    FOCUSED="$(kwmc query window focused name)"
+    FOCUSED="$($kwmc query window focused name)"
 
     echo "$MODE | $SPACES | $FOCUSED"
 }
