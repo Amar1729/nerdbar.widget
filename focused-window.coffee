@@ -11,11 +11,10 @@ render: (output) ->
   """
 
 update: (output, el) ->
-  # my attempts to get monospaced spaces list:
+  # get monospaced spaces list:
   [mode, spaces, focused...] = output.split '|'
   spaces = (@decide_active space for space in (spaces.split ' ')).join('')
   focused = @trunc_focused focused.join('|'), 60
-  #output = [ "<span>#{mode}</span>", "|", spaces, "|", "<span class=\"focused overflow\">#{focused}</span>" ].join('')
   output = ["<span>#{mode}</span>", spaces, "<span class=\"focused\">#{focused}</span>"].join('|')
   $(".foc span:first-child", el).html("  #{output}")
 
