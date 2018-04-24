@@ -1,4 +1,4 @@
-command: 'echo "$(./amar-bar.widget/scripts/spaces_kwm.sh)"'
+command: 'echo "$(./amar-bar.widget/scripts/spaces.sh)"'
 
 refreshFrequency: 1000 # ms
 
