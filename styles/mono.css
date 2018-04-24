@@ -1,10 +1,22 @@
 
 /*todo: write out some doc? then implement https://github.com/pacocoursey/home theme-switching*/
+:root {
+  /* these are from wal - colors.css */
+  /*--bg: var(--background);  /* same as color0 */
+  /*--c1: var(--color1);
+  */
+  
+  --bg: #150c0f;
+  --c1: #8D2429;
+  
+}
 
-/* need to use this to avoid selecting everything in <div __uebersicht*/
-div div {
-  color: var(--color1);
-  background-color: var(--background);
+/*#__uebersicht div {*/
+*[id*='amar-bar-widget'] {
+/*div div {*/
+  color: var(--c1);
+  background-color: var(--bg);
+
   /* note - can't use opacity with divdiv, since it affects things weirdly */
 
   font-family: 'Inconsolata';
@@ -88,6 +100,6 @@ span .list {
 
 /* reverse colors for focused window indicator */
 .active {
-  color:var(--color0);
-  background-color: var(--color1);
+  color: var(--bg);
+  background-color: var(--c1);
 }
