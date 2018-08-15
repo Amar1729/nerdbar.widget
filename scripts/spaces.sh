@@ -29,10 +29,9 @@ get_chunk() {
             ;;
         monocle)
             # list of windows (use for monocle)
-            WINDOWS=$($chunkc tiling::query -d windows | /usr/bin/sed '/(invalid)/d')
-            #WINDOWS=$($chunkc tiling::query -d windows)
-            NUM_WIN=$(echo "$WINDOWS" | wc -l)
-            LHS="[n /""$NUM_WIN""]"
+            CURR_WIN=$($chunkc tiling::query --desktop monocle-index)
+            NUM_WIN=$($chunkc tiling::query --desktop monocle-count)
+            LHS="[""$CURR_WIN""/""$NUM_WIN""]"
             ;;
         *)
             LHS="[ ]"
@@ -41,13 +40,18 @@ get_chunk() {
 
     # MHS:
     # Get list of spaces, and surround active space with ()
-    # NOTE - this route is frackin' killing chunkwm so ... (?)
-    #MONITOR="$($chunkc tiling::query -m id)"
-    #SPACES="$($chunkc tiling::query --desktops-for-monitor $MONITOR)"
-    #MHS=$(echo $SPACES | sed "s|\($($chunkc tiling::query -d id)\)|(\1)|")
-    MHS="$($chunkc tiling::query -d id)"
-    MHS="($MHS)"
+    _CURR=$($chunkc tiling::query --desktop id)
+    _MONITOR=$($chunkc tiling::query --monitor-for-desktop $_CURR)
+    ALL=( $($chunkc tiling::query --desktops-for-monitor $_MONITOR) )
+    LEN_SP=${#ALL[@]}
+    for (( i=0; i<=${LEN_SP}; i++ )); do
+        if [[ ${ALL[$i]} -eq $_CURR ]]; then
+            ALL[$i]="($_CURR)"
+        fi
+    done
 
+    #MHS="(""$($chunkc tiling::query --desktop id)"")"
+    MHS="${ALL[@]}"
 
     # RHS:
     # get name of focused window
