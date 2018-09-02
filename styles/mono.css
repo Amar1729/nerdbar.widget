@@ -1,10 +1,22 @@
+/* 
+Consolidating the css here allows for theme-switching
+original idea from:
+https://github.com/pacocoursey/home
 
-/*todo: write out some doc? then implement https://github.com/pacocoursey/home theme-switching*/
+theme.coffee and focused-window.coffee do the reloading every 1s.
+*/
+:root {
+  /* try this? load symlink in css-loader first */
+  --c1: var(--color1);
+  --bg: var(--background);
+}
 
-/* need to use this to avoid selecting everything in <div __uebersicht*/
-div div {
-  color: var(--color1);
-  background-color: var(--background);
+/*#__uebersicht div {*/
+*[id*='amar-bar-widget'] {
+/*div div {*/
+  color: var(--c1);
+  background-color: var(--bg);
+
   /* note - can't use opacity with divdiv, since it affects things weirdly */
 
   font-family: 'Inconsolata';
@@ -84,10 +96,4 @@ span .list {
   padding-bottom: 11px;
   padding-left: 9px;
   padding-right: 8px;
-}
-
-/* reverse colors for focused window indicator */
-.active {
-  color:var(--color0);
-  background-color: var(--color1);
 }

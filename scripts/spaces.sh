@@ -113,6 +113,7 @@ get_kwm() {
     MODE="$($kwmc query space active mode)"
     SPACES="$(echo ${bbar[*]})"
     FOCUSED="$($kwmc query window focused name)"
+    if [[ -z "$FOCUSED" ]]; then FOCUSED="?"; fi
 
     echo "$MODE | $SPACES | $FOCUSED"
 }
