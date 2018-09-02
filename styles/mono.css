@@ -5,6 +5,11 @@ https://github.com/pacocoursey/home
 
 theme.coffee and focused-window.coffee do the reloading every 1s.
 */
+:root {
+  /* try this? load symlink in css-loader first */
+  --c1: var(--color1);
+  --bg: var(--background);
+}
 
 /*#__uebersicht div {*/
 *[id*='amar-bar-widget'] {

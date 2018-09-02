@@ -10,5 +10,6 @@ render: ( ) ->
   """
 
 style: """
+  @import url(./amar-bar.widget/styles/colors-wal.css)
   @import url(./amar-bar.widget/styles/mono.css)
 """
