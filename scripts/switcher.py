@@ -13,7 +13,8 @@ def get_kwmc_space():
     return space
 
 def get_chunkc_space():
-    pass
+    # TODO - default
+    return 1
 
 # function to determine whether to call kwmc or chunkwm?
 def get_space():

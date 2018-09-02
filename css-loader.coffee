@@ -2,7 +2,7 @@
 
 refreshFrequency: false
 
-render: () ->
+render: ( ) ->
   """
   <div class="">
 
@@ -10,5 +10,5 @@ render: () ->
   """
 
 style: """
-    @import url(./amar-bar.widget/styles/mono.css)
+  @import url(./amar-bar.widget/styles/mono.css)
 """

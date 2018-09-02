@@ -1,8 +1,7 @@
 refreshFrequency: false
 
-render: () ->
+render: ( ) ->
   """
-  
   <link rel="stylesheet" href="./amar-bar.widget/assets/font-awesome/css/font-awesome.min.css" />
 
   <div class="">
@@ -17,6 +16,4 @@ style: """
   height: 25px
   width: 100%
   z-index: -1
-
-  /*@import url(amar-bar.widget/styles/mono.css)*/
 """
