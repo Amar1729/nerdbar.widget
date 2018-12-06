@@ -29,7 +29,13 @@ get_chunk() {
             ;;
         monocle)
             # list of windows (use for monocle)
-            CURR_WIN=$($chunkc tiling::query --desktop monocle-index)
+
+            # temporary fix for query -d monocle-index failing on floating windows
+            if [[ $($chunkc tiling::query --window float) -eq 1 ]]; then
+                CURR_WIN="F"
+            else
+                CURR_WIN=$($chunkc tiling::query --desktop monocle-index)
+            fi
             NUM_WIN=$($chunkc tiling::query --desktop monocle-count)
             LHS="[""$CURR_WIN""/""$NUM_WIN""]"
             ;;
@@ -50,7 +56,6 @@ get_chunk() {
         fi
     done
 
-    #MHS="(""$($chunkc tiling::query --desktop id)"")"
     MHS="${ALL[@]}"
 
     # RHS:
