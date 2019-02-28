@@ -47,16 +47,23 @@ get_chunk() {
     # MHS:
     # Get list of spaces, and surround active space with ()
     _CURR=$($chunkc tiling::query --desktop id)
-    _MONITOR=$($chunkc tiling::query --monitor-for-desktop $_CURR)
-    ALL=( $($chunkc tiling::query --desktops-for-monitor $_MONITOR) )
-    LEN_SP=${#ALL[@]}
-    for (( i=0; i<=${LEN_SP}; i++ )); do
-        if [[ ${ALL[$i]} -eq $_CURR ]]; then
-            ALL[$i]="($_CURR)"
-        fi
-    done
 
-    MHS="${ALL[@]}"
+    # if you're in fullscreen mode, _MONITOR and ALL calls
+    # will get clobbered by empty returns and kill chunkc
+    if [[ $_CURR -ne 0 ]]; then
+        _MONITOR=$($chunkc tiling::query --monitor-for-desktop $_CURR)
+        ALL=( $($chunkc tiling::query --desktops-for-monitor $_MONITOR) )
+        LEN_SP=${#ALL[@]}
+        for (( i=0; i<=${LEN_SP}; i++ )); do
+            if [[ ${ALL[$i]} -eq $_CURR ]]; then
+                ALL[$i]="($_CURR)"
+            fi
+        done
+
+        MHS="${ALL[@]}"
+    else
+        MHS="(0)"
+    fi
 
     # RHS:
     # get name of focused window
