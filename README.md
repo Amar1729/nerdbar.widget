@@ -1,5 +1,11 @@
 # zenbar
 
+### maintenance
+This is a side project of mine, so it may not have everything to suit your needs. Some other neat bars for macOS:
+- https://github.com/apierz/chunkbar.widget
+- https://github.com/blaadje/fancyBar
+- https://github.com/zzzeyez/Pecan
+
 ### zenbar widget
 * Works with both `kwm` and `chunkwm`
 * Dynamically changing colors (based on wrapper script around pywal)
