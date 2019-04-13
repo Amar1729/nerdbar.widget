@@ -12,7 +12,7 @@ This is a side project of mine, so it may not have everything to suit your needs
 * Displays `bsp`/`float`/`[n/m]` (monocle mode)  
 * List of spaces, with active one highlighted with color  
 * Name of focused window
-* Currently-playing song
+* ~~Currently-playing song~~ won't work since Firefox extensions can't write to filesystem anymore
 * cpu/mem info 
 * Battery percentage remaining (including whether it's charging)
 * Date and time 
@@ -25,9 +25,9 @@ Difference between charging and not charging:
 ![Screenshot](screens/charge.png)
 ![Screenshot](screens/no-charge.png)
 
-Dynamic Color Changing:  
+##### Dynamic Color Changing:  
 This works by caching a `colors.sh` file as `colors_<desktopID>.sh` for each different desktop.  
-The easiest way to do this is using my helper scripts [wp](./scripts/wp) and [unique\_space.sh](./scripts/unique_space.sh). They are meant to be copied into your `~/.bin/` and called manually as a replacement for `pywal` when you want to change your wallpaper. See `wp -h` for usage.  
+The easiest way to do this is using my scripts [wp](./scripts/wp) and [unique\_space.sh](./scripts/unique_space.sh). They are meant to be copied into your `~/.bin/` and called manually as a replacement for `pywal` when you want to change your wallpaper. See `wp -h` for usage.  
 Each desktop has its own cached file, and `theme.coffee` and `focused-window.coffee` load from it every 1s. 
 ![Gif](screens/color-reload.gif)
 
