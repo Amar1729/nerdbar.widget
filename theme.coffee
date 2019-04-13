@@ -1,4 +1,4 @@
-command: 'echo "$(./amar-bar.widget/scripts/switcher.py 2>/dev/null)"'
+command: 'echo "$(./amar-bar.widget/scripts/switcher.sh 2>/dev/null)"'
 
 refreshFrequency: 1000
 

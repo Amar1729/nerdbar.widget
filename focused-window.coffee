@@ -1,6 +1,6 @@
 commands =
   space: 'echo "$(./amar-bar.widget/scripts/spaces.sh)"'
-  focus: 'echo "$(./amar-bar.widget/scripts/switcher.py 2>/dev/null)"'
+  focus: 'echo "$(./amar-bar.widget/scripts/switcher.sh 2>/dev/null)"'
 
 command: "echo " +
   "$(#{ commands.space }):::" +

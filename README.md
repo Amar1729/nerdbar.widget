@@ -26,7 +26,9 @@ Difference between charging and not charging:
 ![Screenshot](screens/no-charge.png)
 
 Dynamic Color Changing:  
-This works by caching a `colors.json` file as `colors_<desktopID>.json` for each different desktop ([This script](https://github.com/Amar1729/dotfiles/blob/4c1b4219ff1c66cdff3b6dfa7eb6a0e3b067bb2f/.bin/unique_space.sh) can automatically do this as a wrapper for `pywal`). Each desktop has a saved file, and `theme.coffee` and `focused-window.coffee` load from it every 1s. 
+This works by caching a `colors.sh` file as `colors_<desktopID>.sh` for each different desktop.  
+The easiest way to do this is using my helper scripts [wp](./scripts/wp) and [unique\_space.sh](./scripts/unique_space.sh). They are meant to be copied into your `~/.bin/` and called manually as a replacement for `pywal` when you want to change your wallpaper. See `wp -h` for usage.  
+Each desktop has its own cached file, and `theme.coffee` and `focused-window.coffee` load from it every 1s. 
 ![Gif](screens/color-reload.gif)
 
 
