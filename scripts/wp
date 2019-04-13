@@ -3,10 +3,22 @@
 # wp: a wrapper script mostly for pywal and fetch oneliners
 # Note - most wallpaper-changing functions are mac-specific (for nowf)
 
+# Since this a everyday use script, I personally expect it and unique_space.sh to be in ~/.bin.
+# If you want it somewhere else, you may have to change some paths (e.g. /opt/bin)
+LOC="$HOME/.bin"
+if [[ $(dirname $(realpath $0)) != $LOC ]]; then
+    printf "This script is meant to be called manually by the user, so\n"
+    printf "it and its counterpart unique_space.sh should be run from ~/.bin directory.\n"
+    printf "If you don't want them there, you should change the hardcoded paths to\n"
+    printf "~/.bin/unique_space.sh in this file ($0) and call it from the cli\n"
+    printf "to make sure everything works.\n"
+    exit 1
+fi
+
 _usage() {
     printf "wp: Tool for on-the-fly colorscheme changes.\n"
     printf "Usage:\n"
-    printf "\twp --clean \t\t\tClear out entire pywal cache\n"
+    printf "\twp --clean \t\t\tClear out manually-cached pywal files (e.g. colors_1.sh)\n"
     printf "\twp -w|--wallpaper FILE\t\tSet wallpaper to FILE and cache colors\n"
     printf "\twp --wo|--wallpaper-only FILE\tJust set wallpaper to FILE\n"
     printf "\twp -n|--new \t\t\tNew iTerm window with default profile\n"
@@ -18,7 +30,7 @@ _usage() {
     printf "\n"
     printf "\twp -t|--transparency REAL\tSet transparency of terminal (0.0 to 1.0)\n"
     printf "\twp --tg|--transparency-get\tGet the current terminal's transparency (0.0 to 1.0)\n"
-    printf "\twp --pixelate\tSet background of term to pixelated version of current wallpaper\n"
+    printf "\twp --pixelate\t\t\tSet background of term to pixelated version of current wallpaper\n"
     printf "\t\t\t\t\t\t- requires iTerm2 on mac\n"
     printf "\t\t\t\t\t\t- requires ffmpeg with frei0r\n"
     # todo complete day/night/toggle
