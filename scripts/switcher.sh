@@ -12,9 +12,29 @@ get_colors () {
     local WALC="$HOME/.cache/wal"
     local FN="colors_$1.sh"
 
-    [[ -e "${WALC}/${FN}" ]] && source "${WALC}/${FN}" || source "${WALC}/colors.sh"
+    # attempt our space's colors
+    local F="${WALC}/${FN}"
+    if [[ -e $F ]]; then
+        source $F
+        echo "${background}:::${color1}"
+        return 0
+    fi
+    
+    # attempt space 1 colors
+    local F="${WALC}/colors_1.sh"
+    if [[ -e $F ]]; then
+        source $F
+        echo "${background}:::${color1}"
+        return 0
+    fi
 
-    echo "${background}:::${color1}"
+    # fallback to non-cached colors
+    local F="${WALC}/colors.sh"
+    if [[ -e $F ]]; then
+        source $F
+        echo "${background}:::${color1}"
+        return 0
+    fi
 }
 
 main () {
