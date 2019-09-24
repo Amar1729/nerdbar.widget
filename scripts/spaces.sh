@@ -69,6 +69,8 @@ get_chunk() {
     # get name of focused window
     RHS=$($chunkc tiling::query -w tag)
     if [[ -z "$RHS" ]]; then RHS="~~"; fi
+    ret=$($chunkc tiling::query -w float)
+    if [[ "$ret" == "1" ]]; then RHS="F > $RHS"; fi
 
     echo "$LHS | $MHS | $RHS"
 }
