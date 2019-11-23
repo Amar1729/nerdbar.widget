@@ -1,4 +1,4 @@
-command: 'echo $(cat $HOME/.config/song.txt)'
+command: 'echo "$(./amar-bar.widget/scripts/playing.sh)"'
 refreshFrequency: 1000 # ms
 
 render: (output) ->
