@@ -6,7 +6,35 @@
 # MHS: number of spaces (e.g. 1 2 (3))
 # RHS: name of focused window
 #
-# Tries chunkc first, falls back to kwmc
+# in order, tries yabai > chunkc > kwmc
+
+get_yabai() {
+    yabai=/usr/local/bin/yabai
+    jq=/usr/local/bin/jq
+
+    # parsing yabai stuff requires jq
+    if ! command -v $jq >/dev/null
+    then
+        echo '[ ] | (0) | Cannot find `jq`.'
+        return 0
+    fi
+
+    # make sure yabai is running, and get the current space
+    if ! SPACE=$($yabai -m query --spaces | $jq -r 'map(select(.focused == 1))[0] | .index')
+    then
+        return 1
+    fi
+
+    # monocle mode is unsupported in yabai
+    MODE=$($yabai -m query --spaces | $jq -r 'map(select(.focused == 1))[0] | .type')
+    LHS="[$MODE]"
+
+    MHS=$($yabai -m query --spaces | $jq -r '.[].index' | sed -e "s/$SPACE/($SPACE)/")
+
+    RHS=$($yabai -m query --windows | $jq -r 'map(select(.focused == 1))[0] | .title')
+
+    echo "$LHS | $MHS | $RHS"
+}
 
 get_chunk() {
     chunkc=/usr/local/bin/chunkc
@@ -132,10 +160,13 @@ get_kwm() {
     echo "$MODE | $SPACES | $FOCUSED"
 }
 
-if ! get_chunk 2>/dev/null
+if ! get_yabai 2>/dev/null
 then
-    if ! get_kwm 2>/dev/null
+    if ! get_chunk 2>/dev/null
     then
-        echo "[ ] | (0) | rip wms :/"
+        if ! get_kwm 2>/dev/null
+        then
+            echo "[ ] | (0) | rip wms :/"
+        fi
     fi
 fi
