@@ -19,6 +19,8 @@ get_yabai() {
         return 0
     fi
 
+    set -o pipefail
+
     # make sure yabai is running, and get the current space
     if ! SPACE=$($yabai -m query --spaces | $jq -r 'map(select(.focused == 1))[0] | .index')
     then
