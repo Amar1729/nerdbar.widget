@@ -2,9 +2,11 @@
 
 #### maintenance
 This is a side project of mine, so it may not have everything to suit your needs. Some other neat bars for macOS:
+- https://github.com/Jean-Tinland/simple-bar
 - https://github.com/apierz/chunkbar.widget
 - https://github.com/blaadje/fancyBar
 - https://github.com/zzzeyez/Pecan
+- https://github.com/ahmadassaf/gaudiBar.widget (this one is also a helpful resource for extensible uebersicht widgets)
 
 ## zenbar widget
 * Works with both `kwm` and `chunkwm`
